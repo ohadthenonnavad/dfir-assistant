@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+# BMAD Progress Dashboard CLI wrapper
+# Allows running commands as: bmad-progress [command]
+
+# Detect which script directory to use
+if [ -d "tools/progress-tracking" ]; then
+  SCRIPT_DIR="tools/progress-tracking"
+elif [ -d ".bmad-core/utils" ]; then
+  SCRIPT_DIR=".bmad-core/utils"
+else
+  echo "❌ Error: BMAD Progress Dashboard not installed"
+  echo "Run: npm install bmad-progress-dashboard"
+  exit 1
+fi
+
+# Get the command (default to update if no command)
+COMMAND="${1:-update}"
+
+case "$COMMAND" in
+  update|u)
+    node "$SCRIPT_DIR/update-progress.js"
+    ;;
+  terminal|t)
+    node "$SCRIPT_DIR/progress-terminal.js"
+    ;;
+  watch|w)
+    node "$SCRIPT_DIR/progress-watcher.js"
+    ;;
+  live|l)
+    node "$SCRIPT_DIR/progress-terminal.js" --auto 30
+    ;;
+  trigger)
+    node "$SCRIPT_DIR/trigger-progress-update.js"
+    ;;
+  help|h|--help|-h)
+    echo ""
+    echo "📊 BMAD Progress Dashboard Commands"
+    echo ""
+    echo "Usage: bmad-progress [command]"
+    echo ""
+    echo "Commands:"
+    echo "  update, u           Update dashboard once (default)"
+    echo "  terminal, t         Interactive terminal view"
+    echo "  watch, w            Auto-update on file changes"
+    echo "  live, l             Terminal with auto-refresh (30s)"
+    echo "  trigger             Trigger manual progress update"
+    echo "  help, h             Show this help"
+    echo ""
+    echo "Examples:"
+    echo "  bmad-progress              # Update dashboard"
+    echo "  bmad-progress terminal     # Open terminal view"
+    echo "  bmad-progress watch        # Watch for changes"
+    echo ""
+    echo "📚 Documentation: https://github.com/paulpreibisch/bmad-progress-dashboard"
+    echo ""
+    ;;
+  *)
+    echo "❌ Unknown command: $COMMAND"
+    echo "Run 'bmad-progress help' for usage"
+    exit 1
+    ;;
+esac

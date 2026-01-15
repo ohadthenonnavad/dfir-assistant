@@ -1,0 +1,1 @@
+../_bmad-output/planning-artifacts/product-brief-windows-dfir-assistant-2026-01-13.md

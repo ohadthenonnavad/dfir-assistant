@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+*.log
+*.tmp
+data/books/*.pdf
+data/indexes/
+*.db
+
+# Node (BMAD tooling)
+node_modules/
+
+# Secrets (NEVER commit)
+*.pem
+*.key
+secrets/
+.env.local
+.env.production
+
+# BMAD internal cache
+_bmad/_config/custom/cache-manifest.yaml
+
+# Large model files
+*.gguf
+*.bin

@@ -1,0 +1,14 @@
+{
+  "name": "windows-dfir-assistant",
+  "version": "0.1.0",
+  "description": "Windows Internals DFIR Knowledge Assistant - BMAD Project",
+  "scripts": {
+    "bmad-progress": "node _bmad/core/utils/update-progress.js",
+    "bmad-progress:terminal": "node _bmad/core/utils/progress-terminal.js",
+    "bmad-progress:watch": "node _bmad/core/utils/progress-watcher.js",
+    "bmad-progress:live": "node _bmad/core/utils/progress-terminal.js --watch"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  }
+}
