@@ -1,0 +1,277 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Golden Q&A dataset for DFIR Assistant evaluation",
+    "created": "2026-01-15",
+    "total_queries": 30,
+    "categories": {
+      "concept": 10,
+      "anomaly": 10,
+      "procedure": 5,
+      "tool_command": 5
+    }
+  },
+  "queries": [
+    {
+      "id": "Q001",
+      "type": "concept",
+      "query": "What is a VAD tree and how is it used in memory forensics?",
+      "expected_chunks": ["vad_tree", "virtual_address_descriptor"],
+      "expected_response_contains": ["binary tree", "virtual address", "memory region", "protection"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q002",
+      "type": "concept",
+      "query": "Explain the difference between EPROCESS and KPROCESS structures in Windows.",
+      "expected_chunks": ["eprocess", "kprocess", "process_structure"],
+      "expected_response_contains": ["kernel", "executive", "process object", "thread"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q003",
+      "type": "concept",
+      "query": "What is process hollowing and how does it work?",
+      "expected_chunks": ["process_hollowing", "injection_technique"],
+      "expected_response_contains": ["legitimate process", "unmapped", "malicious code", "suspended"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q004",
+      "type": "concept",
+      "query": "Describe the Windows memory manager and its key components.",
+      "expected_chunks": ["memory_manager", "windows_memory"],
+      "expected_response_contains": ["paging", "virtual memory", "working set", "page table"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q005",
+      "type": "concept",
+      "query": "What are Windows handles and how are they managed?",
+      "expected_chunks": ["handle", "object_manager"],
+      "expected_response_contains": ["kernel object", "handle table", "reference", "HANDLE"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q006",
+      "type": "concept",
+      "query": "Explain the SSDT and why attackers target it.",
+      "expected_chunks": ["ssdt", "system_service"],
+      "expected_response_contains": ["System Service Descriptor Table", "hook", "syscall", "rootkit"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q007",
+      "type": "concept",
+      "query": "What is DLL injection and what are common techniques?",
+      "expected_chunks": ["dll_injection", "injection"],
+      "expected_response_contains": ["LoadLibrary", "CreateRemoteThread", "code injection", "process"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q008",
+      "type": "concept",
+      "query": "Describe the Windows registry and its forensic significance.",
+      "expected_chunks": ["registry", "hive"],
+      "expected_response_contains": ["hive", "key", "persistence", "configuration"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "Q009",
+      "type": "concept",
+      "query": "What is the PEB and what information does it contain?",
+      "expected_chunks": ["peb", "process_environment_block"],
+      "expected_response_contains": ["Process Environment Block", "loaded modules", "heap", "parameters"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q010",
+      "type": "concept",
+      "query": "Explain kernel callbacks and their use in security products.",
+      "expected_chunks": ["callback", "kernel_notification"],
+      "expected_response_contains": ["notification", "process creation", "image load", "registry"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q011",
+      "type": "anomaly",
+      "query": "I found svchost.exe running without any parent process. Is this suspicious?",
+      "expected_chunks": ["svchost", "process_anomaly"],
+      "expected_response_contains": ["services.exe", "parent process", "suspicious", "orphan"],
+      "expected_table": true,
+      "expected_commands": ["windows.pstree", "windows.pslist"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q012",
+      "type": "anomaly",
+      "query": "Found a process with RWX memory regions. What should I investigate?",
+      "expected_chunks": ["rwx_memory", "memory_protection"],
+      "expected_response_contains": ["READ_WRITE_EXECUTE", "code injection", "malfind", "suspicious"],
+      "expected_commands": ["windows.malfind", "windows.vadinfo"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q013",
+      "type": "anomaly",
+      "query": "lsass.exe has an unusual number of handles. Is this normal?",
+      "expected_chunks": ["lsass", "handle_anomaly"],
+      "expected_response_contains": ["credential", "authentication", "handles", "security"],
+      "expected_commands": ["windows.handles"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q014",
+      "type": "anomaly",
+      "query": "I see cmd.exe spawned by explorer.exe connecting to an external IP. Suspicious?",
+      "expected_chunks": ["network_anomaly", "cmd_execution"],
+      "expected_response_contains": ["command and control", "C2", "network connection", "lateral movement"],
+      "expected_commands": ["windows.netscan", "windows.cmdline"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "Q015",
+      "type": "anomaly",
+      "query": "Found a hidden process that only appears in psscan but not pslist. What does this mean?",
+      "expected_chunks": ["hidden_process", "dkom"],
+      "expected_response_contains": ["DKOM", "unlinked", "rootkit", "hidden"],
+      "expected_commands": ["windows.psscan", "windows.pslist"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q016",
+      "type": "anomaly",
+      "query": "PowerShell process has encoded command line with Base64. Should I be concerned?",
+      "expected_chunks": ["powershell", "encoded_command"],
+      "expected_response_contains": ["encoded", "obfuscation", "Base64", "fileless"],
+      "expected_commands": ["windows.cmdline"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "Q017",
+      "type": "anomaly",
+      "query": "A driver without a valid digital signature is loaded. What should I check?",
+      "expected_chunks": ["unsigned_driver", "driver_anomaly"],
+      "expected_response_contains": ["signature", "rootkit", "kernel module", "verification"],
+      "expected_commands": ["windows.driverscan", "windows.modules"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q018",
+      "type": "anomaly",
+      "query": "SSDT entries are hooked. What does this indicate?",
+      "expected_chunks": ["ssdt_hook", "rootkit"],
+      "expected_response_contains": ["rootkit", "syscall", "hook", "inline patch"],
+      "expected_commands": ["windows.ssdt"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q019",
+      "type": "anomaly",
+      "query": "Found conhost.exe spawned by a service instead of csrss.exe. Normal or suspicious?",
+      "expected_chunks": ["conhost", "process_tree"],
+      "expected_response_contains": ["console host", "csrss", "parent", "suspicious"],
+      "expected_commands": ["windows.pstree"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q020",
+      "type": "anomaly",
+      "query": "A process has multiple threads but no loaded DLLs. What could this indicate?",
+      "expected_chunks": ["thread_anomaly", "dll_injection"],
+      "expected_response_contains": ["shellcode", "injection", "reflective", "memory-only"],
+      "expected_commands": ["windows.dlllist", "windows.malfind"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q021",
+      "type": "procedure",
+      "query": "How do I perform initial memory triage on a Windows system?",
+      "expected_chunks": ["triage", "initial_analysis"],
+      "expected_response_contains": ["pslist", "pstree", "netscan", "malfind"],
+      "expected_commands": ["windows.pslist", "windows.pstree", "windows.netscan"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "Q022",
+      "type": "procedure",
+      "query": "What are the steps to investigate a potential process injection attack?",
+      "expected_chunks": ["injection_investigation", "malfind"],
+      "expected_response_contains": ["malfind", "VAD", "memory dump", "yara"],
+      "expected_commands": ["windows.malfind", "windows.vadinfo"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q023",
+      "type": "procedure",
+      "query": "How do I extract and analyze credentials from a memory dump?",
+      "expected_chunks": ["credential_extraction", "lsass"],
+      "expected_response_contains": ["lsadump", "hashdump", "mimikatz", "credentials"],
+      "expected_commands": ["windows.hashdump", "windows.lsadump"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q024",
+      "type": "procedure",
+      "query": "What steps should I follow to detect rootkit activity in memory?",
+      "expected_chunks": ["rootkit_detection", "kernel_analysis"],
+      "expected_response_contains": ["ssdt", "callbacks", "hidden process", "driver"],
+      "expected_commands": ["windows.ssdt", "windows.callbacks", "windows.psscan"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q025",
+      "type": "procedure",
+      "query": "How do I investigate suspicious network connections from a memory dump?",
+      "expected_chunks": ["network_forensics", "connection_analysis"],
+      "expected_response_contains": ["netscan", "netstat", "connection", "port"],
+      "expected_commands": ["windows.netscan", "windows.netstat"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "Q026",
+      "type": "tool_command",
+      "query": "What is the correct syntax for listing all processes with Volatility 3?",
+      "expected_chunks": ["volatility_syntax", "pslist"],
+      "expected_response_contains": ["vol", "-f", "windows.pslist"],
+      "expected_commands": ["windows.pslist"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "Q027",
+      "type": "tool_command",
+      "query": "How do I use malfind to detect injected code?",
+      "expected_chunks": ["malfind_usage", "injection_detection"],
+      "expected_response_contains": ["malfind", "MZ header", "PAGE_EXECUTE"],
+      "expected_commands": ["windows.malfind"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "Q028",
+      "type": "tool_command",
+      "query": "What Volatility command shows process parent-child relationships?",
+      "expected_chunks": ["pstree_usage", "process_tree"],
+      "expected_response_contains": ["pstree", "parent", "child", "tree"],
+      "expected_commands": ["windows.pstree"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "Q029",
+      "type": "tool_command",
+      "query": "How do I dump a specific process's memory with Volatility?",
+      "expected_chunks": ["memory_dump", "process_dump"],
+      "expected_response_contains": ["memdump", "procdump", "-p", "PID"],
+      "expected_commands": ["windows.memmap", "windows.dumpfiles"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q030",
+      "type": "tool_command",
+      "query": "What command do I use to find registry persistence mechanisms?",
+      "expected_chunks": ["registry_persistence", "autoruns"],
+      "expected_response_contains": ["printkey", "Run", "RunOnce", "Services"],
+      "expected_commands": ["windows.registry.printkey"],
+      "difficulty": "medium"
+    }
+  ]
+}

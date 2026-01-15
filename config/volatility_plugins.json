@@ -1,0 +1,297 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Volatility 2 and 3 plugin registry for command validation",
+    "last_updated": "2026-01-15"
+  },
+  "plugins": {
+    "windows.pslist": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.pslist [--pid PID]",
+      "description": "List processes from EPROCESS doubly-linked list",
+      "aliases": ["pslist"]
+    },
+    "windows.psscan": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.psscan",
+      "description": "Scan for EPROCESS objects (finds hidden/unlinked processes)",
+      "aliases": ["psscan"]
+    },
+    "windows.pstree": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.pstree",
+      "description": "Display process tree with parent-child relationships",
+      "aliases": ["pstree"]
+    },
+    "windows.cmdline": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.cmdline [--pid PID]",
+      "description": "Display process command-line arguments",
+      "aliases": ["cmdline"]
+    },
+    "windows.dlllist": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.dlllist [--pid PID]",
+      "description": "List loaded DLLs for each process",
+      "aliases": ["dlllist"]
+    },
+    "windows.handles": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.handles [--pid PID]",
+      "description": "Display open handles for each process",
+      "aliases": ["handles"]
+    },
+    "windows.vadinfo": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.vadinfo [--pid PID]",
+      "description": "Display VAD tree information",
+      "aliases": ["vadinfo"]
+    },
+    "windows.vadwalk": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.vadwalk [--pid PID]",
+      "description": "Walk the VAD tree",
+      "aliases": ["vadwalk"]
+    },
+    "windows.malfind": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.malfind [--pid PID]",
+      "description": "Find hidden and injected code",
+      "aliases": ["malfind"]
+    },
+    "windows.netscan": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.netscan",
+      "description": "Scan for network connections and sockets",
+      "aliases": ["netscan"]
+    },
+    "windows.netstat": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.netstat",
+      "description": "Display network connections (netstat style)",
+      "aliases": ["netstat"]
+    },
+    "windows.registry.hivelist": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.registry.hivelist",
+      "description": "List registry hives in memory",
+      "aliases": ["hivelist"]
+    },
+    "windows.registry.printkey": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.registry.printkey --key <KEY>",
+      "description": "Print registry key values",
+      "aliases": ["printkey"]
+    },
+    "windows.filescan": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.filescan",
+      "description": "Scan for FILE_OBJECT structures",
+      "aliases": ["filescan"]
+    },
+    "windows.dumpfiles": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.dumpfiles [--pid PID]",
+      "description": "Dump cached files from memory",
+      "aliases": ["dumpfiles"]
+    },
+    "windows.memmap": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.memmap [--pid PID]",
+      "description": "Print memory map of a process",
+      "aliases": ["memmap"]
+    },
+    "windows.modules": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.modules",
+      "description": "List loaded kernel modules",
+      "aliases": ["modules"]
+    },
+    "windows.modscan": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.modscan",
+      "description": "Scan for kernel modules (finds hidden modules)",
+      "aliases": ["modscan"]
+    },
+    "windows.driverscan": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.driverscan",
+      "description": "Scan for driver objects",
+      "aliases": ["driverscan"]
+    },
+    "windows.ssdt": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.ssdt",
+      "description": "Display SSDT entries (detect hooks)",
+      "aliases": ["ssdt"]
+    },
+    "windows.callbacks": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.callbacks",
+      "description": "List system callbacks",
+      "aliases": ["callbacks"]
+    },
+    "windows.svcscan": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.svcscan",
+      "description": "Scan for Windows services",
+      "aliases": ["svcscan"]
+    },
+    "windows.envars": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.envars [--pid PID]",
+      "description": "Display environment variables",
+      "aliases": ["envars"]
+    },
+    "windows.hashdump": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.hashdump",
+      "description": "Dump password hashes from SAM",
+      "aliases": ["hashdump"]
+    },
+    "windows.lsadump": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.lsadump",
+      "description": "Dump LSA secrets",
+      "aliases": ["lsadump"]
+    },
+    "windows.info": {
+      "version": ["vol3"],
+      "syntax": "vol -f <memory_dump> windows.info",
+      "description": "Display OS and kernel information",
+      "aliases": ["imageinfo"]
+    },
+    "pslist": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> pslist",
+      "description": "List processes (Vol2)",
+      "vol3_equivalent": "windows.pslist"
+    },
+    "psscan": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> psscan",
+      "description": "Scan for EPROCESS (Vol2)",
+      "vol3_equivalent": "windows.psscan"
+    },
+    "pstree": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> pstree",
+      "description": "Display process tree (Vol2)",
+      "vol3_equivalent": "windows.pstree"
+    },
+    "netscan": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> netscan",
+      "description": "Scan for network connections (Vol2)",
+      "vol3_equivalent": "windows.netscan"
+    },
+    "connections": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> connections",
+      "description": "List open connections (XP/2003 only)",
+      "vol3_equivalent": "windows.netscan"
+    },
+    "malfind": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> malfind",
+      "description": "Find hidden/injected code (Vol2)",
+      "vol3_equivalent": "windows.malfind"
+    },
+    "vadinfo": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> vadinfo -p <PID>",
+      "description": "Display VAD info (Vol2)",
+      "vol3_equivalent": "windows.vadinfo"
+    },
+    "vaddump": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> vaddump -p <PID> -D <output_dir>",
+      "description": "Dump VAD sections to files",
+      "vol3_equivalent": "windows.vadinfo"
+    },
+    "handles": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> handles -p <PID>",
+      "description": "Display handles (Vol2)",
+      "vol3_equivalent": "windows.handles"
+    },
+    "dlllist": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> dlllist -p <PID>",
+      "description": "List DLLs (Vol2)",
+      "vol3_equivalent": "windows.dlllist"
+    },
+    "imageinfo": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> imageinfo",
+      "description": "Identify image profile (Vol2)",
+      "vol3_equivalent": "windows.info"
+    },
+    "hivelist": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> hivelist",
+      "description": "List registry hives (Vol2)",
+      "vol3_equivalent": "windows.registry.hivelist"
+    },
+    "printkey": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> printkey -K <KEY>",
+      "description": "Print registry key (Vol2)",
+      "vol3_equivalent": "windows.registry.printkey"
+    },
+    "filescan": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> filescan",
+      "description": "Scan for file objects (Vol2)",
+      "vol3_equivalent": "windows.filescan"
+    },
+    "modules": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> modules",
+      "description": "List kernel modules (Vol2)",
+      "vol3_equivalent": "windows.modules"
+    },
+    "modscan": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> modscan",
+      "description": "Scan for kernel modules (Vol2)",
+      "vol3_equivalent": "windows.modscan"
+    },
+    "ssdt": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> ssdt",
+      "description": "Display SSDT (Vol2)",
+      "vol3_equivalent": "windows.ssdt"
+    },
+    "driverscan": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> driverscan",
+      "description": "Scan for driver objects (Vol2)",
+      "vol3_equivalent": "windows.driverscan"
+    },
+    "callbacks": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> callbacks",
+      "description": "List system callbacks (Vol2)",
+      "vol3_equivalent": "windows.callbacks"
+    },
+    "svcscan": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> svcscan",
+      "description": "Scan for services (Vol2)",
+      "vol3_equivalent": "windows.svcscan"
+    },
+    "hashdump": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> hashdump",
+      "description": "Dump password hashes (Vol2)",
+      "vol3_equivalent": "windows.hashdump"
+    },
+    "lsadump": {
+      "version": ["vol2"],
+      "syntax": "vol.py -f <memory_dump> lsadump",
+      "description": "Dump LSA secrets (Vol2)",
+      "vol3_equivalent": "windows.lsadump"
+    }
+  }
+}
